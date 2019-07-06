@@ -12,7 +12,7 @@ namespace Form
     {
         [FunctionName("SendMail")]
         public static void Run(
-            [QueueTrigger("myqueue-items", Connection = "Connection_STORAGE")]string myQueueItem
+            [QueueTrigger("form-items", Connection = "Connection_STORAGE")]string myQueueItem
             , [SendGrid(ApiKey = "sendgrid_api_rsvp")] out SendGridMessage message
             , ILogger log)
         {   
@@ -31,7 +31,7 @@ namespace Form
 ";            
             message.AddTo(Environment.GetEnvironmentVariable("ToEmail"));          
             message.AddContent("text/html",body);
-            message.SetFrom("FromEmail");
+            message.SetFrom(Environment.GetEnvironmentVariable("FromEmail"));
             message.SetSubject("Melding fra {data.Name}");
             
         }
