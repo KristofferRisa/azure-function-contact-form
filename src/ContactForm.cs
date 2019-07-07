@@ -30,7 +30,7 @@ namespace Form
             outputQueueItem.Add(data.ToString());
             
             return data != null
-                ? (ActionResult)new OkObjectResult(200) //$"Hello, {data.name}. Sendt from {data.email}.")
+                ? (ActionResult)new OkObjectResult(200)//$"Hello, {data.name}. Sendt from {data.email}.")
                 : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
         }
     }
