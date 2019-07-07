@@ -21,18 +21,18 @@ namespace Form
             message = new SendGridMessage();
             var body = $@"
 <p>
-{data.Name} sendt you a messeage:
+ {data.name} sendt you a messeage:
 <p>
 <hr>
 <p>
-{data.Message}
+ {data.message}
 </p>
-<p>Respond to {data.Email}
+<p>Respond to {data.email}
 ";            
             message.AddTo(Environment.GetEnvironmentVariable("ToEmail"));          
             message.AddContent("text/html",body);
             message.SetFrom(Environment.GetEnvironmentVariable("FromEmail"));
-            message.SetSubject("Melding fra {data.Name}");
+            message.SetSubject($"Melding fra {data.name}");
             
         }
     }

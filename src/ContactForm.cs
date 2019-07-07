@@ -27,7 +27,8 @@ namespace Form
             log.LogInformation($"Reading data from Form: {data.name}. Sendt from {data.email}.");
 
             // outputQueueItem.Add($"Name passed to the function: {data.name}. Sendt from {data.email}.");
-            outputQueueItem.Add(requestBody);
+            outputQueueItem.Add(data.ToString());
+            
             return data != null
                 ? (ActionResult)new OkObjectResult($"Hello, {data.name}. Sendt from {data.email}.")
                 : new BadRequestObjectResult("Please pass a name on the query string or in the request body");
